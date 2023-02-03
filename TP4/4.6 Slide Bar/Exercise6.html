@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP4.6 Slide Bar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-300 w-full h-[90vh]">
+    <div class="wrapper flex flex-row-reverse justify-between">
+        <div class="w-fit mx-10 my-9">
+            <button id="moreBtn" onclick="showMenu(), btn()" class="ease-in transition-all duration-500">
+                <svg class="fill-blue-500" viewBox="0 0 100 80" width="35" height="40">
+                    <rect width="100" height="20"></rect>
+                    <rect y="30" width="100" height="20"></rect>
+                    <rect y="60" width="100" height="20"></rect>
+                </svg>
+            </button>
+        </div>
+        <div id="slideBar" class="overflow-x-hidden w-0 bg-white h-[90vh] m-4 transition-all duration-500 ease-in">
+            <div class="flex justify-between items-center w-full mt-3 mb-2 ">
+                <div class="flex flex-col w-full h-[40vh]">
+                    <div class="flex justify-between items-center p-5">
+                        <a href="#">
+                            <h1 class="text-2xl font-semibold text-sky-800">SLIDE-BAR</h1>
+                        </a>
+                        <button onclick="hideMenu()"><img class="w-fit h-[20px]"
+                                src="https://cdn-icons-png.flaticon.com/128/7698/7698976.png" alt="">
+                        </button>
+                    </div>
+                    <div class="ml-6 mt-5 flex flex-col gap-8 font-medium text-xl text-gray-500 tracking-widest">
+                        <a href="#">Home</a>
+                        <a href="#">About</a>
+                        <a href="#">Projects</a>
+                        <a href="#">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center items-end h-[40vh] ">
+                <div class="flex gap-4 mr-4">
+                    <a href=" #"><img src="https://cdn-icons-png.flaticon.com/128/4406/4406220.png" alt=""
+                            class=" w-fit h-[20px]"></a>
+                    <a href="#"><img src="https://cdn-icons-png.flaticon.com/128/2111/2111688.png" alt=""
+                            class="w-fit h-[20px]"></a>
+                    <a href="#"><img src="https://cdn-icons-png.flaticon.com/128/179/179311.png" alt=""
+                            class="w-fit h-[20px]"></a>
+                    <a href="#"><img src="https://cdn-icons-png.flaticon.com/128/408/408754.png" alt=""
+                            class="w-fit h-[20px]"></a>
+                    <a href="#"><img src="https://cdn-icons-png.flaticon.com/128/408/408472.png" alt=""
+                            class="w-fit h-[20px]"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function showMenu() {
+            document.getElementById("slideBar").classList.toggle("w-[50%]")
+        }
+        function hideMenu() {
+            document.getElementById("slideBar").classList.remove("w-[50%]");
+        }
+        function btn() {
+            document.getElementById("moreBtn").classList.toggle("rotate-180");
+            document.getElementById("moreBtn").classList.toggle("ease-out");
+            document.getElementById("moreBtn").classList.toggle("transition-all");
+            document.getElementById("moreBtn").classList.toggle("duration-490");
+        }
+    </script>
+</body>
+
+</html>

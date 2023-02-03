@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP04.5 NAV-BAR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-300">
+    <div class="w-full h-[100vh] bg-slate-300">
+        <div id="header" class="flex items-center justify-between w-full h-[70px] px-3 bg-white">
+            <h1 class="text-2xl font-semibold text-sky-800"><a href="#">NAV-BAR</a></h1>
+            <div id="myMenu" class="flex text-lg tracking-wider gap-x-4 max-sm:hidden">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Projects</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="flex gap-x-3 max-sm:hidden">
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/128/4406/4406220.png" alt=""
+                        class=" w-fit h-[20px]"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/128/2111/2111688.png" alt=""
+                        class="w-fit h-[20px]"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/128/179/179311.png" alt=""
+                        class="w-fit h-[20px]"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/128/408/408754.png" alt=""
+                        class="w-fit h-[20px]"></a>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/128/408/408472.png" alt=""
+                        class="w-fit h-[20px]"></a>
+            </div>
+            <svg id="moreBtn" class="hidden transition-all duration-500 ease-in-out fill-blue-500 max-sm:flex"
+                viewBox="0 0 100 80" width="25" height="40" onclick="menu()">
+                <rect width="100" height="20"></rect>
+                <rect y="30" width="100" height="20"></rect>
+                <rect y="60" width="100" height="20"></rect>
+            </svg>
+        </div>
+        <div id="moreInfo"
+            class="hidden ease-in max-sm:tracking-wider max-sm:flex max-sm:bg-white max-sm:transition-all max-sm:duration-500 max-sm:h-0">
+            <ul class="flex flex-col mt-3 ml-3 overflow-y-hidden text-gray-500 font-medium text-lg gap-5">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        function menu() {
+            document.getElementById("moreBtn").classList.toggle("fill-black");
+            document.getElementById("moreBtn").classList.toggle("rotate-90");
+            document.getElementById("moreBtn").classList.toggle("ease-in-out");
+            document.getElementById("moreBtn").classList.toggle("duration-480");
+            document.getElementById("moreInfo").classList.toggle("max-sm:h-48");
+        }
+    </script>
+</body>
+
+</html>

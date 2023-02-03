@@ -1,0 +1,59 @@
+html {
+  font-size: 1rem;
+  font-family: Oswald, Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  width: 1015px;
+  height: 100%;
+  background-color: white;
+  margin: auto;
+  position: relative;
+}
+
+.entry-container {
+  padding: 10px;
+  width: 200px;
+  height: 100%;
+  background-color: rgb(219, 219, 219);
+  position: fixed;
+}
+
+.entry-container input {
+  width: 90%;
+}
+
+.list-container {
+  height: 100vh;
+  background-color: rgb(219, 219, 219);
+  margin-left: 225px;
+  padding: 5px;
+  overflow: scroll;
+}
+
+#grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#box {
+  margin: 5px;
+  padding: 5px;
+  width: 170px;
+  height: 220px;
+  background-color: white;
+  text-align: center;
+}
+
+img {
+  padding: 20px 0;
+  width: 100px;
+}
+
+.info {
+  text-align: left;
+}

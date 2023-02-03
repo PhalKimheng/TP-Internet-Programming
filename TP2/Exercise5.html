@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+    <link rel="stylesheet" href="css/Exercise5.css">
+    <script async src="/TP2/opencv.js" onload="onOpenCvReady();"></script>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <canvas id="viewport" width="640px" , height="480px"></canvas>
+        <div>Canvas 👻:Please so your face on me</div>
+        <button id="play_button" disabled onclick="openWebcam()">Play</button>
+    </div>
+    <div class="output-wrapper">
+        <span class="title">Multi Projection with Canvas</span>
+        <div class="grid">
+            <div class="box">
+                <canvas id="canvas-1" width="100%" , height="100%"></canvas>
+            </div>
+            <div class="box">
+                <canvas id="canvas-2" width="100%" , height="100%"></canvas>
+            </div>
+            <div class="box">
+                <canvas id="canvas-3" width="100%" , height="100%"></canvas>
+            </div>
+            <div class="box">
+                <canvas id="canvas-4" width="100%" , height="100%"></canvas>
+            </div>
+            <div class="box">
+                <canvas id="canvas-5" width="100%" , height="100%"></canvas>
+            </div>
+            <div class="box">
+                <canvas id="canvas-6" width="100%" , height="100%"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var r = document.querySelector(':root');
+
+        const canvas = document.querySelector('#viewport');
+        var video = document.createElement('video');
+        video.autoplay = true;
+        video.playsInline = true;
+        let playing = false;
+
+        function openWebcam() {
+            playing = !playing;
+            console.log('playing: ', playing);
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            r.style.setProperty('--width', canvas.width);
+            (function loop() {
+                if (playing) {
+                    canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+
+
+                    cropROI('canvas-1', { startX: 0, startY: 0, endX: 213, endY: 240 })
+                    cropROI('canvas-2', { startX: 213, startY: 0, endX: 213, endY: 240 })
+                    cropROI('canvas-3', { startX: 426, startY: 0, endX: 213, endY: 240 })
+
+                    cropROI('canvas-4', { startX: 0, startY: 240, endX: 213, endY: 240 })
+                    cropROI('canvas-5', { startX: 213, startY: 240, endX: 213, endY: 240 })
+                    cropROI('canvas-6', { startX: 426, startY: 240, endX: 213, endY: 240 })
+
+                    setTimeout(loop, 1000 / 30); //30fps
+                }
+            })();
+            document.querySelector('#play_button').innerHTML = playing ? 'Pause' : 'Play';
+            console.log('playing: ', playing);
+        }
+
+        function cropROI(outputCanvas, { startX, startY, endX, endY }) {
+            let src = cv.imread('viewport');
+            let dst = new cv.Mat();
+            let rect = new cv.Rect(startX, startY, endX, endY);
+            dst = src.roi(rect);
+            cv.imshow(outputCanvas, dst);
+            src.delete();
+            dst.delete();
+        }
+
+        function onOpenCvReady() {
+            console.log('OpenCV.js is ready.');
+            document.querySelector('#play_button').disabled = false
+        }
+        // * Access camera
+        navigator.mediaDevices.getUserMedia({
+            audio: false,
+            video: true
+        }).then((stream) => {
+            video.srcObject = stream;
+        }).catch((err) => {
+            console.log('navigator.MediaDevices.getUser error: '.err.message, err.name);
+        })
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+    <script src="../tailwindcss.js"></script>
+    <script src="https://cdn.tailwindcss.com/"></script>
+</head>
+
+<body class="flex justify-center">
+    <div class="container p-1 mt-3 text-center bg-gray-400 w-fit">
+        <canvas id="canvasImg" class="bg-white border-black border-2 w-[500px] h-[400px]"></canvas>
+        <p class="p-1 m-0">Canvas 👻: Insert me an image please!</p>
+        <input type="file" id="uploadImg">
+    </div>
+    <script>
+        var canvas = document.getElementById('canvasImg');
+        var ctx = canvas.getContext('2d');
+        var uploadedImgFile = document.getElementById('uploadImg');
+        uploadedImgFile.addEventListener('change', handleImage);
+
+        function handleImage(uploadedImgFile) {
+            var reader = new FileReader();
+            reader.onload = function (event) {
+                var img = new Image();
+                img.onload = function () {
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img, 0, 0);
+                }
+                img.src = event.target.result;
+            }
+            reader.readAsDataURL(uploadedImgFile.target.files[0]);
+        }
+    </script>
+</body>
+
+</html>

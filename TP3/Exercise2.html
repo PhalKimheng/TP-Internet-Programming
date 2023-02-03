@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/TP3/css/Exercise2.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Session Storage</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h2 class="header">To-do List Session Storage</h2>
+        <div class="row">
+            <div class="col">
+                <p>Task Title</p>
+                <input type="text" placeholder="Title" id="title">
+            </div>
+            <div class="col">
+                <p>Assignee</p>
+                <input type="text" placeholder="John" id="assingnee">
+            </div>
+            <div class="col">
+                <p>DateLine</p>
+                <input type="Date" id="date">
+            </div>
+            <div class="col">
+                <button class="button" id="addButton" onclick="addNewTask()">Add</button>
+            </div>
+        </div>
+        <div id="list_wrapper">
+
+        </div>
+    </div>
+    <script>
+        let list_wrapper = document.getElementById('list_wrapper');
+        let addButton = document.getElementById('addButton');
+        var taskArr = [];
+        var taskArrs = [
+            {
+                'name': 'Create Project',
+                'assingnee': 'Tola',
+                'date': '24/2/2022'
+            },
+            {
+                'name': 'Define Project',
+                'assingnee': 'Makara',
+                'date': '24/3/2022'
+            },
+            {
+                'name': 'Testing on Project',
+                'assingnee': 'Kompheak',
+                'date': '24/4/2022'
+            },
+            {
+                'name': 'Deploy Project',
+                'assingnee': 'Minea',
+                'date': '24/5/2022'
+            }, {
+                'name': 'Create Project',
+                'assingnee': 'Hosting',
+                'date': '31/3/2022'
+            }
+        ];
+
+        if (sessionStorage.getItem('taskArr') === null) {
+            sessionStorage.setItem('taskArr', JSON.stringify(taskArrs));
+        }
+        let saved = sessionStorage.getItem('taskArr');
+        console.log(saved);
+        if (saved) {
+            taskArr = JSON.parse(sessionStorage.getItem('taskArr'));
+            renderList(taskArr);
+            console.log(saved);
+        }
+
+        function renderList(TaskArr) {
+            var index = 0;
+            let contentList = "";
+            TaskArr.forEach(taskarr => {
+                contentList += `
+        <div class="row">
+            <div class="col">
+            ${taskarr.name}
+            </div>
+            <div class="col">
+            ${taskarr.assingnee}
+            </div>
+            <div class="col">
+            ${taskarr.date}
+            </div>
+            <div class="col">
+            <button onclick="deleteButton(${index})">
+                <img src="https://cdn-icons-png.flaticon.com/512/2782/2782872.png">
+            </button>
+            </div>
+        </div>
+        `;
+                index++;
+            });
+            list_wrapper.innerHTML = contentList;
+        }
+        function addNewTask() {
+            let title = document.getElementById('title').value;
+            let assingnee = document.getElementById('assingnee').value;
+            let date = document.getElementById('date').value;
+            let newTask = {
+                'name': title,
+                'assingnee': assingnee,
+                'date': date
+            };
+            console.log(newTask);
+            taskArr.push(newTask);
+            sessionStorage.setItem('taskArr', taskArr);
+            renderList(taskArr);
+            sessionStorage.setItem('taskArr', JSON.stringify(taskArr));
+        }
+        function deleteButton(index) {
+            taskArr.splice(index, 1);
+            sessionStorage.setItem('taskArr', JSON.stringify(taskArr));
+            renderList(taskArr);
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP04.3 Counter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="flex items-center justify-center">
+    <div class="container w-2/3 h-auto mt-10 border-[7px] border-black bg-blue-100">
+        <h1 class="mt-52 text-[45px] font-bold tracking-wide text-center text-black">Counter</h1>
+        <h1 id="digit" class="mt-5 font-normal text-center text-8xl"></h1>
+        <div class="flex items-center justify-center mt-5 text-lg font-medium mb-52 gap-x-7">
+            <button id="decreaseBtn" class="px-4 py-1 tracking-wider border-2 border-black rounded-md">DECREASE</button>
+            <button id="resetBtn" class="px-4 py-1 tracking-wider border-2 border-black rounded-md">RESET</button>
+            <button id="increaseBtn" class="px-4 py-1 tracking-wider border-2 border-black rounded-md">INCREASE</button>
+        </div>
+    </div>
+    <script>
+        class Counter {
+            number = 0
+            constructor(number) {
+                if (number) this.number = number
+            }
+
+            decrease() {
+                return this.number--
+            }
+
+            increase() {
+                return this.number++
+            }
+
+            reset() {
+                return this.number = 0
+            }
+        }
+        function displayDigit() {
+            localStorage.setItem('counterNumber', counterNumber.number);
+            digit.innerHTML = localStorage.getItem('counterNumber');
+        }
+        const counterNumber = new Counter(localStorage.getItem('counterNumber'));
+        const digit = document.getElementById('digit');
+        const decreaseBtn = document.getElementById('decreaseBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const increaseBtn = document.getElementById('increaseBtn');
+
+        decreaseBtn.addEventListener('click', function () {
+            document.getElementById('digit').style.color = 'red'
+            counterNumber.decrease()
+            displayDigit()
+        });
+        resetBtn.addEventListener('click', function () {
+            document.getElementById('digit').style.color = 'black'
+            counterNumber.reset()
+            displayDigit()
+        });
+        increaseBtn.addEventListener('click', function () {
+            document.getElementById('digit').style.color = 'green'
+            counterNumber.increase()
+            displayDigit()
+        });
+        displayDigit()
+    </script>
+</body>
+
+</html>

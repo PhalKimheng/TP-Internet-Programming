@@ -1,0 +1,46 @@
+:root {
+  --width: 640;
+}
+
+#viewport {
+  border: 1px solid black;
+  background-color: white;
+}
+
+#play_button {
+  background-color: white;
+  color: black;
+}
+
+.wrapper {
+  width: calc(var(--width) * 1px);
+  background: gray;
+  color: white;
+  padding: 10px;
+}
+
+.output-wrapper {
+  margin-top: 20px;
+}
+
+.title {
+  padding: 5px;
+  background-color: grey;
+}
+
+.grid {
+  margin-top: 10px;
+  width: 660px;
+  height: 490px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  align-content: center;
+}
+
+.box {
+  width: 213px;
+  height: 240px;
+  border: 1px solid black;
+  background-color: white;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+    <script src="../tailwindcss.js"></script>
+    <script src="https://cdn.tailwindcss.com/"></script>
+</head>
+
+<body class="flex justify-center">
+    <div class="container p-1 mt-3 text-center bg-gray-400 w-fit">
+        <canvas id="canvasVideo" class="bg-white border-2 border-black w-[600px] h-[400px]"></canvas>
+        <p class="p-1 m-0">Canvas 👻: Please show your face on me!</p>
+        <button class="w-[100px] h-[30px] border-2 mb-1 border-black rounded-lg" id="playButton">Play</button>
+    </div>
+    <script>
+        // video player
+        var playing = true;
+        document.getElementById("playButton").addEventListener("click", playPause);
+        function playPause() {
+            if (playing) {
+                playing = false;
+                document.getElementById("playButton").addEventListener("click", loop);
+                document.getElementById("playButton").innerHTML = "Play";
+            } else {
+                playing = true;
+                document.getElementById("playButton").innerHTML = "Pause";
+                document.getElementById("playButton").addEventListener("click", clear)
+            }
+        }
+        //access the camera
+        var video = document.createElement("video");
+        video.autoplay = true;
+        navigator.mediaDevices.getUserMedia({
+            audio: false,
+            video: true,
+        }).then((stream) => {
+            video.srcObject = stream;
+        }).catch((err) => {
+            console.log('navigator.mediaDevices.getUserMedia error: ', err.message, err.name);
+        });
+        // draw the video
+        var canvas = document.getElementById('canvasVideo');
+        var ctx = canvas.getContext('2d');
+
+        function loop() {
+            if (playing) {
+                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                setTimeout(loop, 1000 / 30);
+            }
+        }
+        function clear() {
+            if (!playing) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+        }
+    </script>
+</body>
+
+</html>

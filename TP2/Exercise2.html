@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Runaway Button</title>
+    <script src="../tailwindcss.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../../tween.js/dist/tween.umd.js"></script>
+</head>
+
+<body class="bg-rose-400 ">
+    <button id="runaway-button"
+        class="h-[50px] bg-white w-[100px] flex items-center justify-center absolute rounded-md"> Click me 🤣</button>
+    <script>
+        const btn = document.getElementById("runaway-button");
+
+        // Setup the animation loop.
+        function animate(time) {
+            requestAnimationFrame(animate)
+            TWEEN.update(time)
+        }
+        requestAnimationFrame(animate)
+
+        const moveFromSourceToDest = (startX, startY, endX, endY) => {
+            const coords = { x: startX, y: startY } // Start at (0, 0)
+            const tween = new TWEEN.Tween(coords) // Create a new tween that modifies 'coords'.
+                .to({ x: endX, y: endY }, 3000) // Move to (300, 200) in 1 second.
+                .easing(TWEEN.Easing.Quadratic.Out) // Use an easing function to make the animation smooth.
+                .onUpdate(() => {
+                    // Called after tween.js updates 'coords'.
+                    // Move 'box' to the position described by 'coords' with a CSS translation.
+                    btn.style.setProperty('transform', `translate(${coords.x}px, ${coords.y}px)`)
+                    // console.log(`${coords.x}px, ${coords.y}px`);
+                })
+                .start() // Start the tween immediately.
+        }
+        ["mouseover", "click"].forEach(function (el) {
+            btn.addEventListener(el, function (event) {
+                const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+                const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+                const oldX = x + 100;
+                const oldY = y + 100;
+                console.log(x, y);
+                console.log(btn.offsetWidth, btn.offsetHeight);
+                moveFromSourceToDest(oldX, oldY, x, y);
+                // console.log(this.offsetHeigh,window.innerHeight);
+            });
+
+        });
+
+
+    </script>
+
+
+</body>
+
+</html>

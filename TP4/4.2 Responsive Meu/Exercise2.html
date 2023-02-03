@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP04.2 Responsive Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="flex items-center justify-center">
+    <div class="flex flex-col items-center justify-center w-full mt-10 mb-10 gap-y-4">
+        <h1 class="text-4xl font-bold tracking-wide text-center text-slate-700">Our Menu</h1>
+        <div class="bg-yellow-600 h-1 ml-2 w-[6%] max-md:w-[14%] max-md:ml-2"></div>
+        <div class="flex justify-center w-1/2 mt-6 font-medium text-yellow-500 gap-x-5">
+            <button
+                class="px-6 py-1.5 text-lg tracking-widest bg-white border-2 rounded-lg border-r-slate-600 border-b-slate-600 border-t-yellow-500 border-l-yellow-500">All</button>
+            <button
+                class="px-6 text-lg tracking-widest bg-white border-2 rounded-lg border-r-slate-600 border-b-slate-600 border-t-yellow-500 border-l-yellow-500">Breakfast</button>
+            <button
+                class="px-6 text-lg tracking-widest bg-white border-2 rounded-lg border-r-slate-600 border-b-slate-600 border-t-yellow-500 border-l-yellow-500">Lunch</button>
+            <button
+                class="px-6 text-lg tracking-widest bg-white border-2 rounded-lg border-r-slate-600 border-b-slate-600 border-t-yellow-500 border-l-yellow-500">Shakes</button>
+            <button
+                class="px-6 text-lg tracking-widest bg-white border-2 rounded-lg border-r-slate-600 border-b-slate-600 border-t-yellow-500 border-l-yellow-500">Dinner</button>
+        </div>
+        <div class="flex flex-col w-1/2 mt-16 menu gap-y-12 max-md:w-[70%]">
+            <div class="flex w-full max-md:flex-col max-md:items-center">
+                <img src="../img/pancake.jpg" alt=""
+                    class="w-[240px] h-[180px] border-[5px] border-yellow-600 rounded-lg max-md:w-full max-md:h-auto">
+                <div class="flex flex-col w-full ml-10 text-xl gap-y-2 max-md:-ml-0.5 max-md:mt-5">
+                    <div class="flex justify-between w-full">
+                        <span class="font-bold tracking-widest">Buttermilk Pancakes</span>
+                        <span class="font-bold text-yellow-600">$15.99</span>
+                    </div>
+                    <div class="w-full h-0.5 bg-slate-500"></div>
+                    <p class="mt-5 text-slate-500">I'm baby woke mlkshk wolf bitters live-edge blue bottle, hammock
+                        freegan copper mug whatever cold-pressed</p>
+                </div>
+            </div>
+            <div class="flex w-full max-md:flex-col max-md:items-center">
+                <img src="../img/diner.jpg" alt=""
+                    class="w-[240px] h-[180px] border-[5px] border-yellow-600 rounded-lg max-md:w-full max-md:h-auto">
+                <div class="flex flex-col w-full ml-10 text-xl gap-y-2 max-md:-ml-0.5 max-md:mt-5">
+                    <div class="flex justify-between w-full">
+                        <span class="font-bold tracking-widest">Diner Double</span>
+                        <span class="font-bold text-yellow-600">$13.99</span>
+                    </div>
+                    <div class="w-full h-0.5 bg-slate-500"></div>
+                    <p class="mt-5 text-slate-500">vaporware iPhone mumblecore selvage raw denim slow-carb leggings
+                        gochujang helvetica man braid jianbing. Marfa thundercats</p>
+                </div>
+            </div>
+            <div class="flex w-full max-md:flex-col max-md:items-center">
+                <img src="../img/oreo.jpg" alt=""
+                    class="w-[240px] h-[180px] border-[5px] border-yellow-600 rounded-lg max-md:w-full max-md:h-auto">
+                <div class="flex flex-col w-full ml-10 text-xl gap-y-2 max-md:-ml-0.5 max-md:mt-5">
+                    <div class="flex justify-between w-full">
+                        <span class="font-bold tracking-widest">Oreo Dream</span>
+                        <span class="font-bold text-yellow-600">$18.99</span>
+                    </div>
+                    <div class="w-full h-0.5 bg-slate-500"></div>
+                    <p class="mt-5 text-slate-500">Portland chicharrones ethical edison bulb, palo santo craft beer chia
+                        heirloom iPhone everyday</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
