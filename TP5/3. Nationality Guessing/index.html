@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP05.3 Nationality Guessing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8/dist/sweetalert2.all.min.js"></script>
+</head>
+
+<body class="flex flex-col items-center justify-center w-full my-5">
+    <div class="w-[50%] h-[700px] items-center flex flex-col justify-center gap-y-6 border-4 border-black">
+        <img src="https://cdn-icons-png.flaticon.com/128/2384/2384988.png" alt="">
+        <h1 class="p-2 font-serif text-5xl font-bold tracking-wider">Let Me Guess Your <span
+                class="text-blue-500">Home</span></h1>
+        <div class="flex gap-x-5">
+            <input class="border-[1px] text-xl border-black rounded-lg bg-slate-200 p-3" 
+                type="text" id="inputName" placeholder="Tell me your first name">
+            <button onclick="guessNationality()" class="px-8 py-2 text-2xl font-semibold text-white bg-blue-400 rounded-lg hover:bg-blue-300">Guess</button>
+        </div>
+        <div id="case" class="w-[60%] text-3xl font-bold flex flex-col gap-y-2 justify-between 
+                tracking-wide h-[250px]">
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>

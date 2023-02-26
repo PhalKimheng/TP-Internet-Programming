@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP05.5 Book Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .bookList {
+            height: 300px;
+            margin: 5px;
+            border-radius: 3%;
+            display: flex;
+            flex-direction: column;
+            padding: 5px;
+            align-items: center;
+            justify-content: space-evenly;
+            background-color: whitesmoke;
+        }
+
+        .bookList a {
+            text-decoration: underline;
+            color: blue;
+        }
+
+        span {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col bg-[#DBE2EF] items-center w-full my-5">
+    <div id="output" class="w-[80%] grid grid-cols-4 text-sm font-normal"></div>
+    <script src="index.js"></script>
+</body>
+
+</html>

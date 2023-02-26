@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP05.4 University List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .uniList {
+            margin: 10px;
+            border-radius: 3%;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            align-items: center;
+            justify-content: start;
+            gap: 10px;
+            background-color: #93BFCF;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col bg-[#DBE2EF] items-center w-full my-5">
+    <div class="w-[70%] items-center flex flex-col gap-y-6">
+        <img class="mt-5" src="https://cdn-icons-png.flaticon.com/128/2231/2231696.png" alt="">
+        <h1 class="p-2 font-serif text-4xl font-bold tracking-wider">Find University In Southeast Asia</h1>
+        <div class="w-[50%]">
+            <select onchange="findUniversity()" name="country" id="country-select"
+                class="block w-full p-3 text-lg text-gray-900 border-2 border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
+                <option value="">Choose a country</option>
+                <option value="Brunei Darussalam">Brunei Darussalam</option>
+                <option value="Cambodia">Cambodia</option>
+                <option value="Indonesia">Indonesia</option>
+                <option value="Lao People's Democratic Republic">Laos</option>
+                <option value="Malaysia">Malaysia</option>
+                <option value="Myanmar">Myanmar</option>
+                <option value="Philippines">Philippines</option>
+                <option value="Singapore">Singapore</option>
+                <option value="Thailand">Thailand</option>
+                <option value="Timor-leste">Timor-Leste</option>
+                <option value="Viet Nam">Vietnam</option>
+            </select>
+        </div>
+        <div id="output" class="w-[95%] grid grid-cols-3 text-base font-medium text-white">
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
